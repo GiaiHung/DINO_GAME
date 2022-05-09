@@ -20,7 +20,12 @@ export function updateCactus(delta, timeScale) {
     }
 
     document.querySelectorAll('[data-cactus]').forEach(cactus => {
-        incProperty(cactus, '--cactus-left', delta * timeScale * -1 * SPEED)
+        if(window.innerWidth < 768) {
+            incProperty(cactus, '--cactus-left', delta * timeScale * -1 * SPEED * 2)
+        } else {
+            incProperty(cactus, '--cactus-left', delta * timeScale * -1 * SPEED)
+        }
+        
         if(getProperty(cactus, '--cactus-left') <= -50) {
             cactus.remove()
         }

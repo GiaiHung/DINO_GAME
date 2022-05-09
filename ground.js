@@ -12,6 +12,12 @@ export function updateGround(delta, timeScale) {
         if(getProperty(ground, '--ground-left') <= -300) {
             setProperty(ground, '--ground-left', 300)
         }
-        incProperty(ground, '--ground-left', delta * timeScale * SPEED * -1)
+        
+        if(window.innerWidth < 768) {
+            incProperty(ground, '--ground-left', delta * timeScale * SPEED * -1 * 2)
+        } else {
+            incProperty(ground, '--ground-left', delta * timeScale * SPEED * -1)   
+        }
+        
     })
 }
